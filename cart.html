@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart — AURELIA</title>
+  <meta name="description" content="Review your AURELIA shopping cart and proceed to checkout.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="login-toggle" class="sr-only" data-testid="login-toggle-input">
+  <input type="checkbox" id="nav-toggle" class="sr-only" data-testid="nav-toggle-input">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" data-testid="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">Aurelia</a>
+      <ul class="nav-links" data-testid="nav-links">
+        <li><a href="index.html" data-testid="nav-home-link">Home</a></li>
+        <li><a href="women.html" data-testid="nav-women-link">Women</a></li>
+        <li><a href="men.html" data-testid="nav-men-link">Men</a></li>
+        <li><a href="product.html" data-testid="nav-new-link">New Arrivals</a></li>
+        <li><a href="about.html" data-testid="nav-about-link">About</a></li>
+        <li><a href="contact.html" data-testid="nav-contact-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-action-btn hide-mobile" data-testid="nav-login-btn">
+          <i class="far fa-user"></i><span>Login</span>
+        </a>
+        <a href="cart.html" class="nav-action-btn" data-testid="nav-cart-btn" style="color:var(--text)">
+          <span class="cart-icon-wrap">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count-badge">3</span>
+          </span>
+          <span class="hide-mobile">Cart</span>
+        </a>
+        <label for="nav-toggle" class="hamburger" data-testid="nav-hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div class="login-modal" data-testid="login-modal">
+    <div class="modal-card">
+      <label for="login-toggle" class="modal-close" data-testid="modal-close-btn"><i class="fas fa-times"></i></label>
+      <div class="modal-header">
+        <span class="modal-logo">Aurelia</span>
+        <h2>Welcome Back</h2>
+        <p>Sign in to access your account</p>
+      </div>
+      <form action="#" method="POST" data-testid="login-form">
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" class="form-control" placeholder="you@example.com" data-testid="login-email"></div>
+        <div class="form-group"><label for="password">Password</label><input type="password" id="password" class="form-control" placeholder="••••••••" data-testid="login-password"></div>
+        <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center" data-testid="login-submit-btn">Sign In</button>
+      </form>
+      <div class="modal-footer"><p>New here? <a href="login.html#signup" data-testid="create-account-link">Create an account</a></p></div>
+    </div>
+  </div>
+
+  <!-- ===== CART SECTION ===== -->
+  <section class="section" data-testid="cart-section">
+    <div class="container">
+
+      <div style="margin-bottom:3rem">
+        <span class="section-eyebrow">Your Selection</span>
+        <h1 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:300">Shopping Cart</h1>
+      </div>
+
+      <div class="cart-layout" data-testid="cart-layout">
+
+        <!-- Cart Items -->
+        <div data-testid="cart-items">
+          <div class="cart-header">
+            <h2 data-testid="cart-title">Your Bag</h2>
+            <span class="cart-count" data-testid="cart-item-count">3 Items</span>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="cart-item" data-testid="cart-item-1">
+            <div class="cart-item-img">
+              <img src="https://images.pexels.com/photos/5582940/pexels-photo-5582940.jpeg?auto=compress&cs=tinysrgb&w=300" alt="The Silk Midi Dress">
+            </div>
+            <div class="cart-item-right">
+              <div class="cart-item-header">
+                <div>
+                  <h3 class="cart-item-name" data-testid="item-1-name">The Silk Midi Dress</h3>
+                  <p class="cart-item-details">Colour: Onyx Black &nbsp;|&nbsp; Size: S</p>
+                </div>
+                <span class="cart-item-price" data-testid="item-1-price">₹2799</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+                <div class="qty-control" data-testid="item-1-qty">
+                  <a href="cart.html" class="qty-btn" aria-label="Decrease quantity">&#8722;</a>
+                  <span class="qty-display">1</span>
+                  <a href="cart.html" class="qty-btn" aria-label="Increase quantity">&#43;</a>
+                </div>
+                <a href="women.html" class="cart-item-remove" data-testid="item-1-remove">Remove</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="cart-item" data-testid="cart-item-2">
+            <div class="cart-item-img">
+              <img src="https://images.unsplash.com/photo-1756483510882-55bc1249642d?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=300" alt="Cashmere Cardigan">
+            </div>
+            <div class="cart-item-right">
+              <div class="cart-item-header">
+                <div>
+                  <h3 class="cart-item-name" data-testid="item-2-name">Embellished Evening Gown</h3>
+                  <p class="cart-item-details">Colour: Ivory Cream &nbsp;|&nbsp; Size: M</p>
+                </div>
+                <span class="cart-item-price" data-testid="item-2-price">₹6599</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+                <div class="qty-control" data-testid="item-2-qty">
+                  <a href="cart.html" class="qty-btn" aria-label="Decrease quantity">&#8722;</a>
+                  <span class="qty-display">1</span>
+                  <a href="cart.html" class="qty-btn" aria-label="Increase quantity">&#43;</a>
+                </div>
+                <a href="women.html" class="cart-item-remove" data-testid="item-2-remove">Remove</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="cart-item" data-testid="cart-item-3">
+            <div class="cart-item-img">
+              <img src="https://images.pexels.com/photos/9775883/pexels-photo-9775883.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Slim Trousers">
+            </div>
+            <div class="cart-item-right">
+              <div class="cart-item-header">
+                <div>
+                  <h3 class="cart-item-name" data-testid="item-3-name">Slim Chino Trousers</h3>
+                  <p class="cart-item-details">Colour: Stone &nbsp;|&nbsp; Size: 32 / Regular</p>
+                </div>
+                <span class="cart-item-price" data-testid="item-3-price">₹3499</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+                <div class="qty-control" data-testid="item-3-qty">
+                  <a href="cart.html" class="qty-btn" aria-label="Decrease quantity">&#8722;</a>
+                  <span class="qty-display">2</span>
+                  <a href="cart.html" class="qty-btn" aria-label="Increase quantity">&#43;</a>
+                </div>
+                <a href="men.html" class="cart-item-remove" data-testid="item-3-remove">Remove</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Continue Shopping -->
+          <div style="padding:2rem 0;display:flex;align-items:center;gap:0.5rem">
+            <a href="women.html" class="btn btn-outline" data-testid="continue-shopping-btn">
+              <i class="fas fa-arrow-left" style="margin-right:0.5rem;font-size:0.75rem"></i> Continue Shopping
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary" data-testid="order-summary">
+          <h3>Order Summary</h3>
+
+          <div class="summary-row">
+            <span>Subtotal (3 items)</span>
+            <strong data-testid="subtotal">₹12,897</strong>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <strong style="color:var(--gold)" data-testid="shipping">Free</strong>
+          </div>
+          <div class="summary-row">
+            <span>Estimated Duties</span>
+            <strong>Calculated at checkout</strong>
+          </div>
+
+          <!-- Wallet Payment Option -->
+          <div id="walletPayOption" style="display:none;margin-top:1.25rem;padding:1rem;background:#fdf9ef;border:1px solid #f0e4b0">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
+              <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;font-weight:500;cursor:pointer">
+                <input type="checkbox" id="useWalletCheck" style="accent-color:var(--gold);width:15px;height:15px">
+                <i class="fas fa-wallet" style="color:var(--gold)"></i>
+                Pay with Aurelia Wallet
+              </label>
+              <span id="walletBalLabel" style="font-size:0.8rem;font-weight:600;color:var(--gold)"></span>
+            </div>
+            <p style="font-size:0.75rem;margin:0;color:var(--text-muted)">Use your wallet balance to pay for this order.</p>
+          </div>
+
+          <!-- Promo Code -->
+          <div class="promo-row" data-testid="promo-row" style="margin-top:1.25rem">
+            <input type="text" class="promo-input" placeholder="Promo code" data-testid="promo-input">
+            <button type="button" class="promo-submit" data-testid="promo-apply-btn">Apply</button>
+          </div>
+
+          <div class="summary-total" data-testid="order-total">
+            <span>Total</span>
+            <span>₹12,897</span>
+          </div>
+
+          <button type="button" class="btn btn-dark" style="width:100%;justify-content:center;margin-top:1.75rem" onclick="handleCheckout()">
+            Proceed to Checkout <i class="fas fa-arrow-right" style="margin-left:0.5rem"></i>
+          </button>
+
+          <p style="font-size:0.78rem;text-align:center;margin-top:1.25rem;color:var(--text-muted)">
+            <i class="fas fa-lock" style="margin-right:0.3rem;color:var(--gold)"></i>
+            Secure checkout powered by Stripe
+          </p>
+
+          <!-- Trust badges -->
+          <div style="display:flex;gap:1.5rem;margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap;justify-content:center">
+            <span style="font-size:0.72rem;color:var(--text-muted);display:flex;align-items:center;gap:0.35rem">
+              <i class="fas fa-shield-alt" style="color:var(--gold)"></i> Secure Payment
+            </span>
+            <span style="font-size:0.72rem;color:var(--text-muted);display:flex;align-items:center;gap:0.35rem">
+              <i class="fas fa-undo" style="color:var(--gold)"></i> Free Returns
+            </span>
+            <span style="font-size:0.72rem;color:var(--text-muted);display:flex;align-items:center;gap:0.35rem">
+              <i class="fas fa-truck" style="color:var(--gold)"></i> Free Shipping
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- You May Also Like -->
+      <div style="margin-top:5rem">
+        <div class="section-header-center text-center" style="margin-bottom:2.5rem">
+          <span class="section-eyebrow">Before You Go</span>
+          <h2>You Might Also Like</h2>
+        </div>
+        <div class="products-grid" data-testid="upsell-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <a href="product.html"><img src="https://images.unsplash.com/photo-1704775989614-8435994e4e97?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Satin Dress" class="product-img"></a>
+              <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="upsell-add-1">Add to Cart</a></div>
+            </div>
+            <div class="product-info"><span class="product-category">Women</span><h3 class="product-name"><a href="product.html">Satin Wrap Dress</a></h3><div class="product-price-row"><span class="product-price">₹3199</span></div></div>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <a href="product.html"><img src="https://images.pexels.com/photos/6616649/pexels-photo-6616649.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blazer" class="product-img"></a>
+              <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="upsell-add-2">Add to Cart</a></div>
+            </div>
+            <div class="product-info"><span class="product-category">Men</span><h3 class="product-name"><a href="product.html">Linen Tailored Blazer</a></h3><div class="product-price-row"><span class="product-price">₹2199</span></div></div>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <a href="product.html"><img src="https://images.unsplash.com/photo-1762605135376-ae5af70a5628?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Abaya Set" class="product-img"></a>
+              <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="upsell-add-3">Add to Cart</a></div>
+            </div>
+            <div class="product-info"><span class="product-category">Modest Collection</span><h3 class="product-name"><a href="product.html">Draped Abaya Set</a></h3><div class="product-price-row"><span class="product-price">₹4299</span></div></div>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <a href="product.html"><img src="https://images.unsplash.com/photo-1769072058710-66381e166f12?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Oxford Shirt" class="product-img"></a>
+              <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="upsell-add-4">Add to Cart</a></div>
+            </div>
+            <div class="product-info"><span class="product-category">Men</span><h3 class="product-name"><a href="product.html">Classic Oxford Shirt</a></h3><div class="product-price-row"><span class="product-price">₹1499</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" data-testid="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Aurelia</a>
+          <p>A modern luxury fashion house dedicated to timeless elegance and conscious craftsmanship since 2015.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="women.html">Women</a></li><li><a href="men.html">Men</a></li><li><a href="product.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AURELIA. All rights reserved.</p>
+        <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="user.js"></script>
+  <script src="forms.js"></script>
+  <script>
+    // Show wallet option if logged in
+    (() => {
+      const SESSION_KEY = "aurelia_session_v1";
+      const WALLET_KEY  = "aurelia_wallet_v1";
+      const session = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||"null"); } catch { return null; } })();
+      if (!session) return;
+
+      const walletBal = parseFloat(localStorage.getItem(WALLET_KEY) || "0");
+      const walletOpt = document.getElementById("walletPayOption");
+      const balLabel  = document.getElementById("walletBalLabel");
+      if (walletOpt) walletOpt.style.display = "block";
+      if (balLabel)  balLabel.textContent = `Balance: ₹${walletBal.toLocaleString("en-IN")}`;
+    })();
+
+    function handleCheckout() {
+      const useWallet = document.getElementById("useWalletCheck")?.checked;
+      if (useWallet) {
+        alert("Paying with Aurelia Wallet! (Checkout integration coming soon — this demo would deduct from your wallet balance.)");
+      } else {
+        alert("Proceeding to checkout! (Payment gateway integration coming soon.)");
+      }
+    }
+  </script>
+</body>
+</html>

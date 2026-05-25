@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Collection — AURELIA</title>
+  <meta name="description" content="Explore AURELIA's Men's SS25 Collection — refined tailoring, modern essentials, and elevated basics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="checkbox" id="login-toggle" class="sr-only" data-testid="login-toggle-input">
+  <input type="checkbox" id="nav-toggle" class="sr-only" data-testid="nav-toggle-input">
+
+  <header class="navbar" data-testid="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">Aurelia</a>
+      <ul class="nav-links" data-testid="nav-links">
+        <li><a href="index.html" data-testid="nav-home-link">Home</a></li>
+        <li><a href="women.html" data-testid="nav-women-link">Women</a></li>
+        <li><a href="men.html" class="active" data-testid="nav-men-link">Men</a></li>
+        <li><a href="product.html" data-testid="nav-new-link">New Arrivals</a></li>
+        <li><a href="about.html" data-testid="nav-about-link">About</a></li>
+        <li><a href="contact.html" data-testid="nav-contact-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-action-btn hide-mobile" data-testid="nav-login-btn">
+          <i class="far fa-user"></i><span>Login</span>
+        </a>
+        <a href="cart.html" class="nav-action-btn" data-testid="nav-cart-btn">
+          <span class="cart-icon-wrap">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count-badge">0</span>
+          </span>
+          <span class="hide-mobile">Cart</span>
+        </a>
+        <label for="nav-toggle" class="hamburger" data-testid="nav-hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <div class="login-modal" data-testid="login-modal">
+    <div class="modal-card">
+      <label for="login-toggle" class="modal-close" data-testid="modal-close-btn"><i class="fas fa-times"></i></label>
+      <div class="modal-header">
+        <span class="modal-logo">Aurelia</span>
+        <h2>Welcome Back</h2>
+        <p>Sign in to access your account</p>
+      </div>
+      <form action="#" method="POST" data-testid="login-form">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="you@example.com" data-testid="login-email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" data-testid="login-password">
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center" data-testid="login-submit-btn">Sign In</button>
+      </form>
+      <div class="modal-footer">
+        <p>New to AURELIA? <a href="login.html#signup" data-testid="create-account-link">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-hero" data-testid="page-hero">
+    <img src="https://images.pexels.com/photos/16238583/pexels-photo-16238583.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Men's Collection Hero" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="hero-eyebrow">Spring / Summer 2025</span>
+      <h1>Men's Collection</h1>
+    </div>
+  </section>
+
+  <section class="section" data-testid="men-collection">
+    <div class="container">
+      <div class="filter-bar" data-testid="filter-bar">
+        <span class="filter-label">Filter:</span>
+        <button type="button" class="filter-btn active" data-filter="all" data-testid="filter-all">All</button>
+        <button type="button" class="filter-btn" data-filter="shirts" data-testid="filter-shirts">Shirts &amp; Kurtas</button>
+        <button type="button" class="filter-btn" data-filter="trousers" data-testid="filter-trousers">Trousers</button>
+        <button type="button" class="filter-btn" data-filter="blazers" data-testid="filter-blazers">Blazers</button>
+        <button type="button" class="filter-btn" data-filter="outerwear" data-testid="filter-outerwear">Outerwear</button>
+        <button type="button" class="filter-btn" data-filter="accessories" data-testid="filter-accessories">Accessories</button>
+        <span class="filter-sort"><i class="fas fa-sliders-h" style="margin-right:0.4rem"></i> Sort: Featured</span>
+      </div>
+
+      <div class="products-grid products-grid-3" data-testid="men-products-grid">
+
+        <!-- 1 -->
+        <div class="product-card reveal reveal-1" data-testid="m-product-1">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/6616649/pexels-photo-6616649.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Linen Blazer" class="product-img"></a>
+            <span class="product-badge">New</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-1">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Blazers</span>
+            <h3 class="product-name"><a href="product.html">Linen Tailored Blazer</a></h3>
+            <div class="product-price-row"><span class="product-price">₹2199</span></div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="product-card reveal reveal-2" data-testid="m-product-2">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.unsplash.com/photo-1769072058710-66381e166f12?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Oxford Shirt" class="product-img"></a>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-2">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Shirts</span>
+            <h3 class="product-name"><a href="product.html">Classic Oxford Shirt</a></h3>
+            <div class="product-price-row"><span class="product-price">₹1499</span></div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="product-card reveal reveal-3" data-testid="m-product-3">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/9775883/pexels-photo-9775883.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Slim Trousers" class="product-img"></a>
+            <span class="product-badge sale">Sale</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-3">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Trousers</span>
+            <h3 class="product-name"><a href="product.html">Slim Chino Trousers</a></h3>
+            <div class="product-price-row">
+              <span class="product-price">₹1699</span>
+              <span class="product-price-old">₹1899</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="product-card reveal reveal-4" data-testid="m-product-4">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/33633245/pexels-photo-33633245.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nehru Jacket Set" class="product-img"></a>
+            <span class="product-badge">New</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-4">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Shirts</span>
+            <h3 class="product-name"><a href="product.html">Mandarin Collar Kurta Set</a></h3>
+            <div class="product-price-row"><span class="product-price">₹2899</span></div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="product-card reveal reveal-5" data-testid="m-product-5">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.unsplash.com/photo-1630780565118-511258d74d08?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Ribbed Tank" class="product-img"></a>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-5">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Shirts</span>
+            <h3 class="product-name"><a href="product.html">Relaxed Linen Shirt</a></h3>
+            <div class="product-price-row"><span class="product-price">₹1299</span></div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="product-card reveal reveal-6" data-testid="m-product-6">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/16238583/pexels-photo-16238583.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Merino Sweater" class="product-img"></a>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-6">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Knitwear</span>
+            <h3 class="product-name"><a href="product.html">Merino Wool Sweater</a></h3>
+            <div class="product-price-row"><span class="product-price">₹2499</span></div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="product-card reveal reveal-1" data-testid="m-product-7">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.unsplash.com/photo-1769081653696-5ce5a59263bf?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" alt="Sherwaani" class="product-img"></a>
+            <span class="product-badge">Limited</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-7">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Blazers</span>
+            <h3 class="product-name"><a href="product.html">Structured Bandhgala Suit</a></h3>
+            <div class="product-price-row"><span class="product-price">₹5999</span></div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="product-card reveal reveal-2" data-testid="m-product-8">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/6616649/pexels-photo-6616649.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Slim Trousers 2" class="product-img" style="filter:hue-rotate(20deg)"></a>
+            <span class="product-badge sale">Sale</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-8">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Trousers</span>
+            <h3 class="product-name"><a href="product.html">Pleated Wide-Leg Trousers</a></h3>
+            <div class="product-price-row">
+              <span class="product-price">₹1899</span>
+              <span class="product-price-old">₹2299</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="product-card reveal reveal-3" data-testid="m-product-9">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/9775883/pexels-photo-9775883.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Overshirt" class="product-img"></a>
+            <span class="product-badge">New</span>
+            <a href="#" class="product-wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="m-add-cart-9">Add to Cart</a></div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Outerwear</span>
+            <h3 class="product-name"><a href="product.html">Cotton Overshirt Jacket</a></h3>
+            <div class="product-price-row"><span class="product-price">₹2799</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:3.5rem">
+        <a href="men.html" class="btn btn-outline" data-testid="load-more-btn">Load More Pieces</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter" data-testid="newsletter-section">
+    <div class="container">
+      <span class="section-eyebrow">Stay Connected</span>
+      <h2>Join the AURELIA Circle</h2>
+      <p class="sub-text">Early access to new collections, private sale invitations and curated style notes.</p>
+      <form class="newsletter-form" action="#" method="POST" data-testid="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required data-testid="newsletter-email-input">
+        <button type="submit" data-testid="newsletter-submit-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" data-testid="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Aurelia</a>
+          <p>A modern luxury fashion house dedicated to timeless elegance and conscious craftsmanship since 2015.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="women.html">Women</a></li><li><a href="men.html">Men</a></li><li><a href="product.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AURELIA. All rights reserved.</p>
+        <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="user.js"></script>
+  <script src="filter.js"></script>
+  <script src="forms.js"></script>
+</body>
+</html>

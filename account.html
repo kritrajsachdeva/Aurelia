@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings — AURELIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .account-shell { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; padding: 3rem 0; }
+    .account-sidebar { border-right: 1px solid var(--border); padding-right: 2rem; }
+    .account-sidebar h3 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 1rem; }
+    .account-nav-item { display: flex; align-items: center; gap: 0.65rem; padding: 0.6rem 0.8rem; font-size: 0.84rem; color: var(--text-muted); border-radius: 2px; transition: all 0.2s; text-decoration: none; margin-bottom: 0.15rem; cursor: pointer; background: none; border: none; font-family: inherit; width: 100%; text-align: left; }
+    .account-nav-item:hover, .account-nav-item.active { background: var(--bg-alt); color: var(--text); }
+    .account-nav-item.active { font-weight: 500; }
+    .account-nav-item i { width: 14px; text-align: center; font-size: 0.8rem; }
+    .account-panel { display: none; }
+    .account-panel.active { display: block; }
+    .panel-title { font-size: 1.5rem; font-weight: 300; margin-bottom: 0.5rem; }
+    .panel-sub { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .wallet-card { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #fff; padding: 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .wallet-card::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(212,175,55,0.15); border-radius: 50%; }
+    .wallet-card::after { content: ''; position: absolute; bottom: -20px; right: 60px; width: 80px; height: 80px; background: rgba(212,175,55,0.08); border-radius: 50%; }
+    .wallet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+    .wallet-balance { font-size: 2.5rem; font-weight: 200; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.25rem; }
+    .wallet-balance span { color: var(--gold); }
+    .wallet-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .wallet-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .wallet-actions .btn { padding: 0.6rem 1.25rem; font-size: 0.75rem; }
+    .refund-card { border: 1px solid var(--border); padding: 1.25rem; margin-bottom: 1rem; }
+    .refund-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+    .refund-id { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .refund-amount { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .refund-status { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.65rem; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .refund-meta { font-size: 0.78rem; color: var(--text-muted); }
+    .address-card { border: 1px solid var(--border); padding: 1.25rem; margin-bottom: 1rem; position: relative; }
+    .address-default { position: absolute; top: 1rem; right: 1rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; background: var(--gold); color: #fff; padding: 0.2rem 0.5rem; }
+    .address-name { font-size: 0.875rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .address-text { font-size: 0.825rem; color: var(--text-muted); line-height: 1.6; }
+    .address-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+    .address-actions .btn { padding: 0.4rem 0.9rem; font-size: 0.72rem; }
+    .save-bar { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    @media(max-width:768px){ .account-shell{grid-template-columns:1fr} .account-sidebar{border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap} .account-sidebar h3{display:none} .info-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="nav-toggle" class="sr-only">
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Aurelia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="women.html">Women</a></li>
+        <li><a href="men.html">Men</a></li>
+        <li><a href="product.html">New Arrivals</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-action-btn hide-mobile" data-testid="nav-login-btn">
+          <i class="far fa-user"></i><span>Login</span>
+        </a>
+        <a href="cart.html" class="nav-action-btn">
+          <span class="cart-icon-wrap"><i class="fas fa-shopping-bag"></i><span class="cart-count-badge">0</span></span>
+          <span class="hide-mobile">Cart</span>
+        </a>
+        <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="product-breadcrumb" style="margin-bottom:2rem">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <span style="color:var(--text)">Account Settings</span>
+      </div>
+      <div class="account-shell">
+        <!-- Sidebar -->
+        <div class="account-sidebar">
+          <h3>My Account</h3>
+          <button class="account-nav-item active" data-panel="profile"><i class="fas fa-user"></i> Profile</button>
+          <a href="orders.html" class="account-nav-item"><i class="fas fa-box"></i> My Orders</a>
+          <button class="account-nav-item" data-panel="wallet"><i class="fas fa-wallet"></i> Wallet</button>
+          <a href="wishlist.html" class="account-nav-item"><i class="far fa-heart"></i> Wishlist</a>
+          <button class="account-nav-item" data-panel="refunds"><i class="fas fa-undo-alt"></i> Refunds</button>
+          <button class="account-nav-item" data-panel="addresses"><i class="fas fa-map-marker-alt"></i> Addresses</button>
+          <button class="account-nav-item" style="color:#c0392b;margin-top:1.5rem" id="accountSignOut"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+        </div>
+
+        <!-- Panels -->
+        <div>
+          <!-- Profile -->
+          <div class="account-panel active" id="panel-profile">
+            <h2 class="panel-title">Profile</h2>
+            <p class="panel-sub">Manage your personal information</p>
+            <div class="info-grid">
+              <div class="form-group"><label class="form-group label">Full Name</label><input type="text" class="form-control" id="profileName" placeholder="Your name"></div>
+              <div class="form-group"><label>Email Address</label><input type="email" class="form-control" id="profileEmail" placeholder="your@email.com" readonly style="background:var(--bg-alt);color:var(--text-muted)"></div>
+              <div class="form-group"><label>Phone Number</label><input type="tel" class="form-control" id="profilePhone" placeholder="+91 98765 43210"></div>
+              <div class="form-group"><label>Date of Birth</label><input type="date" class="form-control" id="profileDob"></div>
+            </div>
+            <div class="form-group" style="margin-top:0.5rem"><label>Gender</label>
+              <select class="form-control" id="profileGender">
+                <option value="">Prefer not to say</option>
+                <option>Female</option><option>Male</option><option>Non-binary</option>
+              </select>
+            </div>
+            <div class="save-bar">
+              <button class="btn btn-dark" onclick="saveProfile()">Save Changes</button>
+              <button class="btn btn-outline" onclick="loadProfile()">Cancel</button>
+            </div>
+            <div id="profileMsg" style="margin-top:1rem;font-size:0.82rem"></div>
+          </div>
+
+          <!-- Wallet -->
+          <div class="account-panel" id="panel-wallet">
+            <h2 class="panel-title">Aurelia Wallet</h2>
+            <p class="panel-sub">Your wallet balance and transaction history</p>
+            <div class="wallet-card">
+              <div class="wallet-label">Available Balance</div>
+              <div class="wallet-balance"><span>₹</span><span id="walletDisplayBal">0</span></div>
+              <div class="wallet-note">Use at checkout to pay for your orders</div>
+              <div class="wallet-actions">
+                <button class="btn btn-outline-light" onclick="alert('Add money feature coming soon!')">Add Money</button>
+              </div>
+            </div>
+            <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem">Transaction History</h3>
+            <div id="walletTransactions" style="font-size:0.875rem;color:var(--text-muted);padding:2rem;text-align:center;border:1px solid var(--border)">No transactions yet.</div>
+          </div>
+
+          <!-- Refunds -->
+          <div class="account-panel" id="panel-refunds">
+            <h2 class="panel-title">Refunds & Returns</h2>
+            <p class="panel-sub">Track your return requests and refund status</p>
+            <div class="refund-card">
+              <div class="refund-card-header">
+                <div>
+                  <div class="refund-id">REF-2025-001</div>
+                  <div class="refund-meta">Order #AUR-2025-001 · Silk Midi Dress · 25 Apr 2025</div>
+                </div>
+                <span class="refund-status">Processed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div class="refund-meta">Refunded to: Aurelia Wallet</div>
+                <div class="refund-amount">₹2,799</div>
+              </div>
+            </div>
+            <div style="margin-top:1.5rem;padding:1.25rem;border:1px solid var(--border);background:var(--bg-alt)">
+              <h4 style="font-size:0.78rem;margin-bottom:0.5rem">Return Policy</h4>
+              <p style="font-size:0.82rem;margin:0">Free returns within 30 days of delivery. Items must be unworn, unwashed and in original packaging. Refunds are processed within 5–7 business days to your original payment method or Aurelia Wallet.</p>
+            </div>
+          </div>
+
+          <!-- Addresses -->
+          <div class="account-panel" id="panel-addresses">
+            <h2 class="panel-title">Saved Addresses</h2>
+            <p class="panel-sub">Manage your delivery addresses</p>
+            <div class="address-card">
+              <span class="address-default">Default</span>
+              <div class="address-name">Home</div>
+              <div class="address-text" id="addr1">
+                Loading...
+              </div>
+              <div class="address-actions">
+                <button class="btn btn-outline" onclick="alert('Edit address feature coming soon!')">Edit</button>
+                <button class="btn btn-outline" onclick="alert('Address removed.')">Remove</button>
+              </div>
+            </div>
+            <button class="btn btn-dark" style="margin-top:0.5rem" onclick="alert('Add new address feature coming soon!')">
+              <i class="fas fa-plus" style="margin-right:0.5rem"></i> Add New Address
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="footer-logo">Aurelia</a><p>A modern luxury fashion house since 2015.</p></div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="women.html">Women</a></li><li><a href="men.html">Men</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="contact.html">Returns</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 AURELIA. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="user.js"></script>
+  <script>
+    const SESSION_KEY = "aurelia_session_v1";
+    const PROFILE_KEY = "aurelia_profile_v1";
+    const WALLET_KEY  = "aurelia_wallet_v1";
+
+    const session = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||"null"); } catch { return null; } })();
+    if (!session) { window.location.href = "login.html"; }
+
+    // Load profile
+    const loadProfile = () => {
+      const p = (() => { try { return JSON.parse(localStorage.getItem(PROFILE_KEY)||"{}"); } catch { return {}; } })();
+      document.getElementById("profileName").value  = p.name  || session?.name  || "";
+      document.getElementById("profileEmail").value = p.email || session?.email || "";
+      document.getElementById("profilePhone").value = p.phone || "";
+      document.getElementById("profileDob").value   = p.dob   || "";
+      document.getElementById("profileGender").value = p.gender || "";
+    };
+    loadProfile();
+
+    const saveProfile = () => {
+      const p = {
+        name:   document.getElementById("profileName").value.trim(),
+        email:  document.getElementById("profileEmail").value.trim(),
+        phone:  document.getElementById("profilePhone").value.trim(),
+        dob:    document.getElementById("profileDob").value,
+        gender: document.getElementById("profileGender").value,
+      };
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(p));
+      const msg = document.getElementById("profileMsg");
+      msg.textContent = "Changes saved!";
+      msg.style.color = "#166534";
+      setTimeout(() => { msg.textContent = ""; }, 2500);
+    };
+
+    // Wallet balance
+    const walletBal = parseFloat(localStorage.getItem(WALLET_KEY) || "0");
+    document.getElementById("walletDisplayBal").textContent = walletBal.toLocaleString("en-IN");
+
+    // Address placeholder
+    document.getElementById("addr1").innerHTML = `
+      ${session?.name || "Your Name"}<br>
+      123 Model Town, Phase 2<br>
+      Ludhiana, Punjab 141002<br>
+      +91 98765 43210
+    `;
+
+    // Tab navigation
+    const panels = document.querySelectorAll(".account-panel");
+    const navItems = document.querySelectorAll(".account-nav-item[data-panel]");
+    const switchPanel = (panelId) => {
+      panels.forEach(p => p.classList.remove("active"));
+      navItems.forEach(n => n.classList.remove("active"));
+      const target = document.getElementById("panel-" + panelId);
+      if (target) target.classList.add("active");
+      navItems.forEach(n => { if (n.dataset.panel === panelId) n.classList.add("active"); });
+    };
+    navItems.forEach(item => {
+      item.addEventListener("click", () => switchPanel(item.dataset.panel));
+    });
+
+    // Handle hash routing
+    const hash = window.location.hash.replace("#", "");
+    if (hash && document.getElementById("panel-" + hash)) switchPanel(hash);
+
+    // Sign out
+    document.getElementById("accountSignOut").addEventListener("click", () => {
+      localStorage.removeItem(SESSION_KEY);
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

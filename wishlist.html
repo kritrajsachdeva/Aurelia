@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist — AURELIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .account-shell { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; padding: 3rem 0; }
+    .account-sidebar { border-right: 1px solid var(--border); padding-right: 2rem; }
+    .account-sidebar h3 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 1rem; }
+    .account-nav-item { display: flex; align-items: center; gap: 0.65rem; padding: 0.6rem 0.8rem; font-size: 0.84rem; color: var(--text-muted); border-radius: 2px; transition: all 0.2s; text-decoration: none; margin-bottom: 0.15rem; }
+    .account-nav-item:hover, .account-nav-item.active { background: var(--bg-alt); color: var(--text); }
+    .account-nav-item.active { font-weight: 500; }
+    .account-nav-item i { width: 14px; text-align: center; font-size: 0.8rem; }
+    .wishlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .empty-state { text-align: center; padding: 5rem 2rem; }
+    .empty-state i { font-size: 3rem; color: var(--border); margin-bottom: 1.5rem; display: block; }
+    @media(max-width:900px){ .wishlist-grid{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:768px){ .account-shell{grid-template-columns:1fr} .account-sidebar{border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap} .account-sidebar h3{display:none} }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="nav-toggle" class="sr-only">
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Aurelia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="women.html">Women</a></li>
+        <li><a href="men.html">Men</a></li>
+        <li><a href="product.html">New Arrivals</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-action-btn hide-mobile" data-testid="nav-login-btn">
+          <i class="far fa-user"></i><span>Login</span>
+        </a>
+        <a href="cart.html" class="nav-action-btn">
+          <span class="cart-icon-wrap"><i class="fas fa-shopping-bag"></i><span class="cart-count-badge">0</span></span>
+          <span class="hide-mobile">Cart</span>
+        </a>
+        <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="product-breadcrumb" style="margin-bottom:2rem">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="account.html">Account</a><span class="sep">/</span>
+        <span style="color:var(--text)">Wishlist</span>
+      </div>
+      <div class="account-shell">
+        <div class="account-sidebar">
+          <h3>My Account</h3>
+          <a href="account.html" class="account-nav-item"><i class="fas fa-user"></i> Profile</a>
+          <a href="orders.html" class="account-nav-item"><i class="fas fa-box"></i> My Orders</a>
+          <a href="account.html#wallet" class="account-nav-item"><i class="fas fa-wallet"></i> Wallet</a>
+          <a href="wishlist.html" class="account-nav-item active"><i class="far fa-heart"></i> Wishlist</a>
+          <a href="account.html#refunds" class="account-nav-item"><i class="fas fa-undo-alt"></i> Refunds</a>
+          <a href="account.html#addresses" class="account-nav-item"><i class="fas fa-map-marker-alt"></i> Addresses</a>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem">
+            <h2 style="font-size:1.5rem;font-weight:300">My Wishlist</h2>
+            <span id="wishCountLabel" style="font-size:0.82rem;color:var(--text-muted)"></span>
+          </div>
+          <div id="wishlistContent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="footer-logo">Aurelia</a><p>A modern luxury fashion house since 2015.</p></div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="women.html">Women</a></li><li><a href="men.html">Men</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">Returns</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 AURELIA. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="user.js"></script>
+  <script>
+    const SESSION_KEY  = "aurelia_session_v1";
+    const WISHLIST_KEY = "aurelia_wishlist_v1";
+    const CART_KEY     = "aurelia_cart_v1";
+
+    const session = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||"null"); } catch { return null; } })();
+    if (!session) { window.location.href = "login.html"; }
+
+    const money = (n) => `₹${n.toLocaleString("en-IN")}`;
+    const slugify = (v) => v.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+    const readWishlist = () => {
+      try { const d = JSON.parse(localStorage.getItem(WISHLIST_KEY)||"[]"); return Array.isArray(d)?d:[]; } catch { return []; }
+    };
+
+    const seedWishlist = () => {
+      const w = readWishlist();
+      if (w.length) return w;
+      const demo = [
+        { id: "silk-midi-dress-2799", name: "Silk Midi Dress", price: 2799, img: "https://images.pexels.com/photos/5582940/pexels-photo-5582940.jpeg?auto=compress&cs=tinysrgb&w=600" },
+        { id: "cashmere-cardigan-3299", name: "Cashmere Cardigan", price: 3299, img: "https://images.unsplash.com/photo-1756483510882-55bc1249642d?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600" },
+      ];
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(demo));
+      return demo;
+    };
+
+    const addToCart = (item) => {
+      const cart = (() => { try { const d = JSON.parse(localStorage.getItem(CART_KEY)||"[]"); return Array.isArray(d)?d:[]; } catch { return []; } })();
+      const ex = cart.find(c => c.id === item.id);
+      if (ex) { ex.qty += 1; } else { cart.push({...item, qty:1}); }
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    };
+
+    const removeFromWishlist = (id) => {
+      const w = readWishlist().filter(i => i.id !== id);
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(w));
+      render();
+    };
+
+    const render = () => {
+      const wishlist = seedWishlist();
+      const countEl  = document.getElementById("wishCountLabel");
+      const container = document.getElementById("wishlistContent");
+
+      countEl.textContent = `${wishlist.length} item${wishlist.length !== 1 ? "s" : ""}`;
+
+      if (!wishlist.length) {
+        container.innerHTML = `<div class="empty-state"><i class="far fa-heart"></i><h3 style="font-weight:300;margin-bottom:0.5rem">Your wishlist is empty</h3><p style="margin-bottom:1.5rem">Save pieces you love — they'll appear here.</p><a href="women.html" class="btn btn-dark">Browse Collection</a></div>`;
+        return;
+      }
+
+      container.innerHTML = `<div class="wishlist-grid">
+        ${wishlist.map(item => `
+          <div class="product-card" data-id="${item.id}">
+            <div class="product-img-wrapper">
+              <a href="product.html"><img src="${item.img}" alt="${item.name}" class="product-img"></a>
+              <button class="product-wishlist" style="opacity:1" onclick="removeFromWishlist('${item.id}')" title="Remove from wishlist"><i class="fas fa-heart" style="color:var(--gold)"></i></button>
+              <div class="product-quick-actions">
+                <button class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem" onclick="addToCart({id:'${item.id}',name:'${item.name}',price:${item.price},image:'${item.img}'}); alert('${item.name} added to bag!')">Add to Bag</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="product.html">${item.name}</a></h3>
+              <div class="product-price-row"><span class="product-price">${money(item.price)}</span></div>
+            </div>
+          </div>
+        `).join("")}
+      </div>`;
+    };
+
+    render();
+  </script>
+</body>
+</html>

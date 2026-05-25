@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Silk Midi Dress — AURELIA</title>
+  <meta name="description" content="AURELIA's signature Silk Midi Dress — handcrafted from 100% pure silk, draped to perfection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding: 0 0;
+    }
+    .accordion-content.open {
+      max-height: 300px;
+      padding: 0.75rem 0 1rem;
+    }
+    .feature-row {
+      cursor: pointer;
+      user-select: none;
+    }
+    .feature-row:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="checkbox" id="login-toggle" class="sr-only" data-testid="login-toggle-input">
+  <input type="checkbox" id="nav-toggle" class="sr-only" data-testid="nav-toggle-input">
+
+  <header class="navbar" data-testid="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">Aurelia</a>
+      <ul class="nav-links" data-testid="nav-links">
+        <li><a href="index.html" data-testid="nav-home-link">Home</a></li>
+        <li><a href="women.html" data-testid="nav-women-link">Women</a></li>
+        <li><a href="men.html" data-testid="nav-men-link">Men</a></li>
+        <li><a href="product.html" class="active" data-testid="nav-new-link">New Arrivals</a></li>
+        <li><a href="about.html" data-testid="nav-about-link">About</a></li>
+        <li><a href="contact.html" data-testid="nav-contact-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-action-btn hide-mobile" data-testid="nav-login-btn">
+          <i class="far fa-user"></i><span>Login</span>
+        </a>
+        <a href="cart.html" class="nav-action-btn" data-testid="nav-cart-btn">
+          <span class="cart-icon-wrap">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count-badge">0</span>
+          </span>
+          <span class="hide-mobile">Cart</span>
+        </a>
+        <label for="nav-toggle" class="hamburger" data-testid="nav-hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <div class="login-modal" data-testid="login-modal">
+    <div class="modal-card">
+      <label for="login-toggle" class="modal-close" data-testid="modal-close-btn"><i class="fas fa-times"></i></label>
+      <div class="modal-header">
+        <span class="modal-logo">Aurelia</span>
+        <h2>Welcome Back</h2>
+        <p>Sign in to access your account</p>
+      </div>
+      <form action="#" method="POST" data-testid="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="you@example.com" data-testid="login-email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" data-testid="login-password">
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center" data-testid="login-submit-btn">Sign In</button>
+      </form>
+      <div class="modal-footer"><p>New here? <a href="login.html#signup" data-testid="create-account-link">Create an account</a></p></div>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="product-breadcrumb" data-testid="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="women.html">Women</a>
+        <span class="sep">/</span>
+        <a href="women.html">Dresses</a>
+        <span class="sep">/</span>
+        <span style="color:var(--text)">The Silk Midi Dress</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <section class="section" data-testid="product-detail-section">
+    <div class="container">
+      <div class="product-detail" data-testid="product-detail">
+
+        <!-- Gallery — all photos are of the same dress on different models -->
+        <div class="product-gallery" data-testid="product-gallery">
+          <div class="product-main-img" data-testid="product-main-img">
+            <img src="https://images.pexels.com/photos/5582940/pexels-photo-5582940.jpeg?auto=compress&cs=tinysrgb&w=900" alt="The Silk Midi Dress — Front View">
+          </div>
+          <div class="product-thumbs" data-testid="product-thumbs">
+            <div class="product-thumb active">
+              <img src="https://images.pexels.com/photos/5582940/pexels-photo-5582940.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Front View">
+            </div>
+            <div class="product-thumb">
+              <img src="https://images.pexels.com/photos/5561913/pexels-photo-5561913.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Side View">
+            </div>
+            <div class="product-thumb">
+              <img src="https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Full Length">
+            </div>
+            <div class="product-thumb">
+              <img src="https://images.pexels.com/photos/5560021/pexels-photo-5560021.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Detail Shot">
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-details-content" data-testid="product-details-content">
+          <div style="margin-bottom:0.5rem">
+            <span class="product-category" style="font-size:0.78rem">Women — Dresses</span>
+          </div>
+
+          <h1 class="product-detail-name" data-testid="product-name">The Silk Midi Dress</h1>
+          <p class="product-detail-price" data-testid="product-price">₹2799</p>
+
+          <p class="product-desc" data-testid="product-description">
+            An effortless silhouette in 100% pure silk charmeuse. Cut to a flattering midi length with a relaxed, draped fit — this dress moves beautifully with the body. Features a subtle V-neckline, side seam pockets, and a self-tie waist sash. A refined piece crafted for effortless elegance.
+          </p>
+
+          <!-- Size Selector -->
+          <div style="margin-bottom:0.5rem">
+            <span class="product-option-label" data-testid="size-label">Size</span>
+          </div>
+          <div class="size-selector" data-testid="size-selector">
+            <input type="radio" name="size" id="s-xs" value="XS">
+            <label for="s-xs" data-testid="size-xs">XS</label>
+            <input type="radio" name="size" id="s-s" value="S" checked>
+            <label for="s-s" data-testid="size-s">S</label>
+            <input type="radio" name="size" id="s-m" value="M">
+            <label for="s-m" data-testid="size-m">M</label>
+            <input type="radio" name="size" id="s-l" value="L">
+            <label for="s-l" data-testid="size-l">L</label>
+            <input type="radio" name="size" id="s-xl" value="XL">
+            <label for="s-xl" data-testid="size-xl">XL</label>
+          </div>
+
+          <div style="margin-bottom:1.25rem">
+            <a href="contact.html" style="font-size:0.78rem;color:var(--text-muted);text-decoration:underline" data-testid="size-guide-link">View Size Guide</a>
+          </div>
+
+          <!-- Actions -->
+          <div class="product-actions" data-testid="product-actions">
+            <a href="cart.html" class="btn btn-dark" data-testid="add-to-cart-btn">
+              <i class="fas fa-shopping-bag" style="margin-right:0.5rem"></i> Add to Cart
+            </a>
+            <a href="#" class="btn btn-outline" style="flex:0;padding:0.9rem 1rem;" data-testid="wishlist-btn" aria-label="Add to Wishlist">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+
+          <!-- Shipping Note -->
+          <div style="background:var(--bg-alt);padding:1rem 1.25rem;font-size:0.8375rem;color:var(--text-muted);display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem">
+            <i class="fas fa-truck" style="color:var(--gold)"></i>
+            <span>Free shipping on orders over ₹1599. Express delivery available.</span>
+          </div>
+
+          <!-- Product Features — Working Accordion -->
+          <div class="product-features" data-testid="product-features">
+
+            <div class="feature-row" data-accordion>
+              <span>Composition &amp; Care</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              100% Pure Silk Charmeuse. Dry clean only. Do not bleach. Store folded in breathable cloth bag away from direct sunlight. The natural lustre of silk will be preserved with gentle care.
+            </div>
+
+            <div class="feature-row" data-accordion>
+              <span>Fit &amp; Sizing</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              Relaxed midi fit that falls below the knee. Model is 5'8" and wears a size S. The self-tie sash allows for an adjustable waist. We recommend sizing up if you prefer a more draped silhouette.
+            </div>
+
+            <div class="feature-row" data-accordion>
+              <span>Delivery &amp; Returns</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              Standard delivery: 3–5 business days. Express: 1–2 business days. Free returns within 30 days of purchase. Items must be unworn, unwashed and in original packaging with tags attached.
+            </div>
+
+            <div class="feature-row" data-accordion>
+              <span>Sustainability</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              Silk sourced from certified ethical mills in India. Our packaging is 100% recyclable. We offset carbon emissions on all shipments and contribute 1% of revenue to environmental causes through our AURELIA Green initiative.
+            </div>
+
+          </div>
+
+          <!-- Badges -->
+          <div style="display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap">
+            <span style="font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;gap:0.4rem">
+              <i class="fas fa-leaf" style="color:var(--gold)"></i> Sustainably Sourced
+            </span>
+            <span style="font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;gap:0.4rem">
+              <i class="fas fa-undo" style="color:var(--gold)"></i> 30-Day Returns
+            </span>
+            <span style="font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;gap:0.4rem">
+              <i class="fas fa-shield-alt" style="color:var(--gold)"></i> Secure Checkout
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOU MAY ALSO LIKE — more curated products -->
+  <section class="section section-bg" data-testid="related-products">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-eyebrow">Complete the Look</span>
+        <h2>You May Also Like</h2>
+      </div>
+      <div class="products-grid" data-testid="related-grid">
+        <div class="product-card reveal reveal-1">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Satin Dress" class="product-img"></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="related-add-1">Add to Cart</a></div>
+          </div>
+          <div class="product-info"><span class="product-category">Women — Dresses</span><h3 class="product-name"><a href="product.html">Satin Slip Dress</a></h3><div class="product-price-row"><span class="product-price">₹2199</span></div></div>
+        </div>
+        <div class="product-card reveal reveal-2">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/5560021/pexels-photo-5560021.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Linen Co-ord" class="product-img"></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="related-add-2">Add to Cart</a></div>
+          </div>
+          <div class="product-info"><span class="product-category">Women — Co-ords</span><h3 class="product-name"><a href="product.html">Linen Co-ord Set</a></h3><div class="product-price-row"><span class="product-price">₹3499</span></div></div>
+        </div>
+        <div class="product-card reveal reveal-3">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/5561913/pexels-photo-5561913.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wrap Dress" class="product-img"></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="related-add-3">Add to Cart</a></div>
+          </div>
+          <div class="product-info"><span class="product-category">Women — Dresses</span><h3 class="product-name"><a href="product.html">Chiffon Wrap Dress</a></h3><div class="product-price-row"><span class="product-price">₹2599</span></div></div>
+        </div>
+        <div class="product-card reveal reveal-4">
+          <div class="product-img-wrapper">
+            <a href="product.html"><img src="https://images.pexels.com/photos/28263000/pexels-photo-28263000.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blazer" class="product-img"></a>
+            <div class="product-quick-actions"><a href="cart.html" class="btn btn-white" style="width:100%;justify-content:center;padding:0.7rem 1rem;" data-testid="related-add-4">Add to Cart</a></div>
+          </div>
+          <div class="product-info"><span class="product-category">Women — Outerwear</span><h3 class="product-name"><a href="product.html">Tailored Longline Coat</a></h3><div class="product-price-row"><span class="product-price">₹4999</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" data-testid="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Aurelia</a>
+          <p>A modern luxury fashion house dedicated to timeless elegance and conscious craftsmanship since 2015.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="women.html">Women</a></li><li><a href="men.html">Men</a></li><li><a href="product.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AURELIA. All rights reserved.</p>
+        <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="user.js"></script>
+  <script src="filter.js"></script>
+  <script src="forms.js"></script>
+  <script>
+    // Working accordion
+    document.querySelectorAll('[data-accordion]').forEach(row => {
+      row.addEventListener('click', () => {
+        const content = row.nextElementSibling;
+        const icon = row.querySelector('i');
+        const isOpen = content.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+        document.querySelectorAll('[data-accordion] i').forEach(i => i.className = 'fas fa-chevron-down');
+
+        if (!isOpen) {
+          content.classList.add('open');
+          icon.className = 'fas fa-chevron-up';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
